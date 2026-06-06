@@ -475,7 +475,7 @@ const skills = [
   { label: 'Moderating',       level: 'Knowledgeable', orbit: 2, angle: 153, color: 'from-fuchsia-400 to-rose-400',  type: 'soft' },
   { label: 'SQL',              level: 'Knowledgeable', orbit: 2, angle: 204, color: 'from-teal-500 to-emerald-400',  type: 'ds'   },
   { label: 'Mathematics',      level: 'Knowledgeable', orbit: 2, angle: 255, color: 'from-violet-400 to-teal-400',   type: 'ds'   },
-  { label: 'Event Planning',   level: 'Knowledgeable', orbit: 2, angle: 306, color: 'from-pink-500 to-fuchsia-400',  type: 'soft' },
+  // { label: 'Event Planning',   level: 'Knowledgeable', orbit: 2, angle: 306, color: 'from-pink-500 to-fuchsia-400',  type: 'soft' },
 
   // ── Intermediate — orbit 3 (furthest) ─────────────────────
   { label: 'Public Speaking',  level: 'Intermediate',  orbit: 3, angle: 90,  color: 'from-pink-400 to-rose-300',     type: 'soft' },
