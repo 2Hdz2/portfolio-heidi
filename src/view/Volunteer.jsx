@@ -203,9 +203,9 @@ const Volunteer = () => {
               Volunteer & Leadership
             </span>
             <h2 className="mt-4 text-4xl font-semibold text-white md:text-5xl">Volunteer & Leadership</h2>
-            <p className="mt-4 max-w-2xl text-slate-300">
+            {/* <p className="mt-4 max-w-2xl text-slate-300">
               A curated gallery of leadership roles, volunteer initiatives, and the skills I apply to create impact.
-            </p>
+            </p> */}
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">

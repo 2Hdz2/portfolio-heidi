@@ -531,7 +531,8 @@ const Skills = () => (
         {[R1, R2, R3].map((r) => (
           <div
             key={r}
-            className="absolute rounded-full border border-dashed border-white/[0.07]"
+            // className="absolute rounded-full border border-dashed border-white/[0.07]"
+           className="absolute rounded-full border border-dashed border-slate-400/30"
             style={{ width: r * 2, height: r * 2 }}
           />
         ))}
