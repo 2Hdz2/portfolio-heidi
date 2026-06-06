@@ -407,7 +407,7 @@ const HeroSection = () => {
             textAlign: 'center',
           }}
         >
-          UI/UX · Software Engineering · Computational Astrophysics
+          · ASPIRING DATA SCIENTIST ·
         </motion.p>
 
         {/* CTAs — centered */}

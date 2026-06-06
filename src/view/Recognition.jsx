@@ -20,8 +20,11 @@ const workItems = [
     period: 'September 2025 – February 2026',
     images: [masintern, mas, mas2],
     bullets: [
-      'Coordinated with teams and plants across national and international locations to plan and timeline solutions in the garment industry domain.',
-    ],
+  'Coordinated project timelines, stakeholder communication, and deployment activities across local and international manufacturing operations.',
+  'Developed reports, presentations, RAID logs, and project documentation to support governance, tracking, and executive decision-making.',
+  'Partnered with cluster management and deployment teams to facilitate project rollouts, site visits, and operational readiness initiatives.',
+  'Improved workflow effectiveness and managed project deliverables through completion within a collaborative cross-functional environment.',
+],
     confidential: true,
   },
   {
