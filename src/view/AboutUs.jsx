@@ -1,6 +1,6 @@
 ﻿// import { motion } from 'framer-motion';
 // import { Award, Bolt, Users2, Sparkles } from 'lucide-react';
-// import photo from '../assets/about.png';
+// import photo from '../assets/about.webp';
 // import ScrollIndicator from '../components/ScrollIndicator';
 // const stats = [
 //   {
@@ -138,10 +138,11 @@
 // };
 
 // export default AboutUs;
+
 import { motion } from 'framer-motion';
 import { Award, Bolt, Users2, Sparkles } from 'lucide-react';
-import photo from '../assets/about.png';
-import ScrollIndicator from '../components/ScrollIndicator';
+import photo from '../assets/about.webp';
+// import ScrollIndicator from '../components/ScrollIndicator';
 
 const stats = [
   {
@@ -245,10 +246,10 @@ const AboutUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl sm:text-2xl font-semibold text-white">A love letter to DS</h3>
+            {/* <h3 className="text-xl sm:text-2xl font-semibold text-white">A love letter to DS</h3>
             <blockquote className="mt-4 border-l-4 border-cyan-400 pl-4 italic text-base sm:text-lg text-slate-200">
               "The deeper I dove, the more I found and that's exactly what keeps me submerged in the ocean of AI, DS, and ML"
-            </blockquote>
+            </blockquote> */}
             <p className="mt-4 text-sm sm:text-base leading-relaxed">
               My interest in Data Science truly flourished through my 4th Year Final Research, where I worked on an AI framework for Exoplanet Detection via Direct Imaging and Transit Photometry. It was intriguing, to say the least, to witness how these networks work together to accomplish what humans can, but in a fraction of the time.
             </p>
@@ -256,7 +257,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <ScrollIndicator />
+      {/* <ScrollIndicator /> */}
     </section>
   );
 };

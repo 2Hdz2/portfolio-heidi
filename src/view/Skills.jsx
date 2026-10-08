@@ -293,10 +293,10 @@ const Skills = () => (
         <OrbitDiagram R1={R1d} R2={R2d} R3={R3d} size={580} />
       </div>
 
-      <p className="text-xs text-slate-600 text-center">Skills orbit the hub — the closer the ring, the stronger the skill</p>
+      {/* <p className="text-xs text-slate-600 text-center">Skills orbit the hub — the closer the ring, the stronger the skill</p> */}
     </div>
 
-    <ScrollIndicator />
+    {/* <ScrollIndicator /> */}
   </section>
 );
 

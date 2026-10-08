@@ -133,7 +133,7 @@ import {
   ExternalLink,
   Send,
 } from "lucide-react";
-import ScrollIndicator from "../components/ScrollIndicator";
+// import ScrollIndicator from "../components/ScrollIndicator";
 
 const contactItems = [
   {
@@ -362,7 +362,7 @@ const Contact = () => {
         </motion.form>
       </div>
 
-      <ScrollIndicator />
+      {/* <ScrollIndicator /> */}
     </section>
   );
 };

@@ -1,7 +1,7 @@
 // // import { useMemo, useState, useEffect, useRef } from 'react';
 // // import { motion } from 'framer-motion';
 // // import { ArrowRight } from 'lucide-react';
-// // import myPhoto from '../assets/heidi.png';
+// // import myPhoto from '../assets/heidi.webp';
 // // import ScrollIndicator from '../components/ScrollIndicator';
 // // import Header from '../components/Header';
 
@@ -477,7 +477,7 @@
 // import { useMemo, useState, useEffect, useRef } from 'react';
 // import { motion } from 'framer-motion';
 // import { ArrowRight } from 'lucide-react';
-// import myPhoto from '../assets/heidi.png';
+// import myPhoto from '../assets/heidi.webp';
 // import ScrollIndicator from '../components/ScrollIndicator';
 // import Header from '../components/Header';
 
@@ -917,7 +917,7 @@
 // import { useMemo, useState, useEffect, useRef } from 'react';
 // import { motion } from 'framer-motion';
 // import { ArrowRight } from 'lucide-react';
-// import myPhoto from '../assets/heidi.png';
+// import myPhoto from '../assets/heidi.webp';
 // import ScrollIndicator from '../components/ScrollIndicator';
 // import Header from '../components/Header';
 
@@ -1393,7 +1393,7 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import myPhoto from '../assets/heidi.png';
+import myPhoto from '../assets/heidi.webp';
 import ScrollIndicator from '../components/ScrollIndicator';
 // import Header from '../components/Header';
 
@@ -1876,7 +1876,7 @@ const HeroSection = ({ onNavigate }) => {
           </motion.div>
         </div>
 
-        <ScrollIndicator />
+        {/* <ScrollIndicator /> */}
       </section>
     </div>
   );
