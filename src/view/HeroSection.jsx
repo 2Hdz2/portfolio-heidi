@@ -1395,7 +1395,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import myPhoto from '../assets/heidi.png';
 import ScrollIndicator from '../components/ScrollIndicator';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 
 const bgWords = [
   'Data Scientist', 'Computational Astrophysicist', 'IT Undergraduate',
@@ -1415,7 +1415,7 @@ const placedWords = bgWords.map((word, i) => ({
   color: i % 3 === 0 ? '#9d41cf' : i % 3 === 1 ? '#7c90db' : '#ffffff',
 }));
 
-const HeroSection = () => {
+const HeroSection = ({ onNavigate }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const canvasRef = useRef();
 
@@ -1597,7 +1597,7 @@ const HeroSection = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <section
         id="hero"
         className="relative overflow-hidden bg-black text-white"
@@ -1779,7 +1779,7 @@ const HeroSection = () => {
             transition={{ delay: 1.35, duration: 0.7 }}
             className="mt-3 flex flex-wrap justify-center items-center gap-3 px-4"
           >
-            <motion.a
+            {/* <motion.a
               href="#about-me"
               whileHover={{ y: -3, boxShadow: '0 0 36px rgba(157,65,207,0.55)' }}
               transition={{ duration: 0.2 }}
@@ -1798,9 +1798,37 @@ const HeroSection = () => {
             >
               Explore Portfolio
               <ArrowRight size={15} />
-            </motion.a>
+            </motion.a> */}
+            <motion.button
+  type="button"
+  onClick={() => onNavigate('about-me')}
+  whileHover={{
+    y: -3,
+    boxShadow: '0 0 36px rgba(157,65,207,0.55)',
+  }}
+  transition={{ duration: 0.2 }}
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    background: 'linear-gradient(135deg, #9d41cf, #7c90db)',
+    color: '#ffffff',
+    padding: '0.65rem 1.8rem',
+    borderRadius: '9999px',
+    fontWeight: 600,
+    fontSize: 'clamp(0.72rem, 1.5vw, 0.82rem)',
+    letterSpacing: '0.08em',
+    textDecoration: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: '0 0 20px rgba(157,65,207,0.3)',
+  }}
+>
+  Explore Portfolio
+  <ArrowRight size={15} />
+</motion.button>
 
-            <motion.a
+            {/* <motion.a
               href="#contact"
               whileHover={{ borderColor: '#9d41cf', color: '#9d41cf', boxShadow: '0 0 16px rgba(157,65,207,0.25)' }}
               transition={{ duration: 0.2 }}
@@ -1818,7 +1846,33 @@ const HeroSection = () => {
               }}
             >
               Contact Me
-            </motion.a>
+            </motion.a> */}
+            <motion.button
+  type="button"
+  onClick={() => onNavigate('contact')}
+  whileHover={{
+    borderColor: '#9d41cf',
+    color: '#9d41cf',
+    boxShadow: '0 0 16px rgba(157,65,207,0.25)',
+  }}
+  transition={{ duration: 0.2 }}
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    background: 'transparent',
+    color: 'rgba(255,255,255,0.7)',
+    padding: '0.65rem 1.8rem',
+    borderRadius: '9999px',
+    border: '1px solid rgba(157,65,207,0.38)',
+    fontWeight: 600,
+    fontSize: 'clamp(0.72rem, 1.5vw, 0.82rem)',
+    letterSpacing: '0.08em',
+    cursor: 'pointer',
+  }}
+>
+  Contact Me
+</motion.button>
           </motion.div>
         </div>
 

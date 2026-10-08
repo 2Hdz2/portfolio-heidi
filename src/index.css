@@ -1,31 +1,17 @@
-/* @import "tailwindcss";
+@import "tailwindcss";
 
 html,
 body,
 #root {
   width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-} */
-
-@import "tailwindcss";
-
-html, body, #root {
-  width: 100%;
-  min-height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
   cursor: none;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-behavior: auto;
 }
 
 .cursor {

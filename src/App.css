@@ -1,5 +1,93 @@
 ﻿@import "tailwindcss";
 
+/* =========================================
+   HORIZONTAL PORTFOLIO NAVIGATION
+   ========================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Main horizontal scrolling container */
+.portfolio-container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  /* scroll-behavior: smooth; */
+
+  overscroll-behavior-x: contain;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.portfolio-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each "page" */
+.portfolio-panel {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100vh;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  position: relative;
+
+  /* Allows normal vertical scrolling inside the section */
+  overscroll-behavior-y: contain;
+
+  scrollbar-width: none;
+}
+
+.portfolio-panel::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+   Content inside each horizontal page.
+   The section itself can become taller than 100vh,
+   allowing vertical scrolling.
+*/
+.panel-content {
+  width: 100%;
+  min-height: 100%;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    scroll-snap-type: x mandatory;
+  }
+
+  .portfolio-panel {
+    flex-basis: 100vw;
+    width: 100vw;
+  }
+}
+
 :root {
   --bg-primary: #000000;
   --bg-section: #0a0a0f;
@@ -27,9 +115,9 @@ body,
   box-sizing: border-box;
 }
 
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 .section-heading {
   color: var(--accent-purple);
@@ -211,5 +299,104 @@ html {
 @media (max-width: 768px) {
   .hero-section {
     padding-top: 6rem;
+  }
+}
+
+/* ============================================
+   HORIZONTAL PORTFOLIO
+   ============================================ */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * The entire portfolio moves horizontally.
+ */
+.portfolio-container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  overscroll-behavior-x: contain;
+}
+
+.portfolio-container::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Each major page occupies exactly
+ * one viewport width.
+ */
+.portfolio-panel {
+  flex: 0 0 100vw;
+
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  overscroll-behavior-y: contain;
+}
+
+.portfolio-panel::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Content inside each page can be taller
+ * than the viewport and scroll vertically.
+ */
+.portfolio-page-content {
+  width: 100%;
+  min-height: 100%;
+}
+
+/*
+ * Prevent the hero from accidentally
+ * becoming larger than its horizontal page.
+ */
+.portfolio-panel > div {
+  width: 100%;
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    scroll-snap-type: x mandatory;
+  }
+
+  .portfolio-panel {
+    width: 100vw;
+    flex-basis: 100vw;
   }
 }
