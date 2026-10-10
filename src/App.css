@@ -400,3 +400,65 @@ body,
     flex-basis: 100vw;
   }
 }
+
+/* ============================================
+   MOBILE LAYOUT (final overrides)
+   Phones: stack pages vertically and let the
+   window scroll normally. Desktop keeps the
+   horizontal carousel.
+   ============================================ */
+
+/* dvh = the *visible* viewport, so the browser's
+   address bar doesn't push content off-screen */
+@supports (height: 100dvh) {
+  .portfolio-container,
+  .portfolio-panel {
+    height: 100dvh;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .portfolio-container {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .portfolio-panel {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    overscroll-behavior: auto;
+  }
+
+  /* Keep headings clear of the fixed header */
+  .portfolio-page-content {
+    padding-top: 2.5rem;
+  }
+
+  /* Thin divider between stacked pages */
+  .portfolio-panel + .portfolio-panel {
+    border-top: 1px solid rgba(157, 65, 207, 0.2);
+  }
+
+  /* 16px inputs stop iOS Safari zooming in on focus */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}

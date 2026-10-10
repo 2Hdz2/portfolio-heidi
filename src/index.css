@@ -7,7 +7,23 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  cursor: none;
+}
+
+/* Hide the native cursor only where the custom cursor is shown (mouse devices) */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  #root {
+    cursor: none;
+  }
+}
+
+/* Touch devices: no custom cursor */
+@media (hover: none), (pointer: coarse) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
 }
 
 html {

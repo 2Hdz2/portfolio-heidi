@@ -1,4 +1,5 @@
 ﻿import { motion, AnimatePresence } from 'framer-motion';
+import useLockBodyScroll from '../hooks/useLockBodyScroll';
 import { useState } from 'react';
 import { Film, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import ScrollIndicator from '../components/ScrollIndicator';
@@ -42,6 +43,7 @@ const projects = [
 ];
 
 const ExpandedCard = ({ project, onClose }) => {
+  useLockBodyScroll();
   const [mediaIndex, setMediaIndex] = useState(0);
   const mediaItems = [
     ...(project.video ? [{ type: 'video', src: project.video }] : []),
@@ -66,7 +68,7 @@ const ExpandedCard = ({ project, onClose }) => {
         exit={{ opacity: 0, scale: 0.92, y: 20 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full max-w-4xl rounded-3xl border border-white/10 bg-slate-950 shadow-[0_0_80px_rgba(124,58,237,0.2)]"
-        style={{ maxHeight: '90vh', cursor: 'default', overflow: 'hidden' }}
+        style={{ maxHeight: '90dvh', cursor: 'default', overflow: 'hidden' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button — always visible, large, high z-index */}
@@ -78,7 +80,7 @@ const ExpandedCard = ({ project, onClose }) => {
           <X size={18} />
         </button>
 
-        <div className="flex flex-col md:flex-row" style={{ maxHeight: '90vh', overflowY: 'auto' }}>
+        <div className="flex flex-col md:flex-row" style={{ maxHeight: '90dvh', overflowY: 'auto' }}>
           {/* Media panel */}
           <div className="relative flex h-52 sm:h-64 w-full shrink-0 flex-col items-center justify-center bg-slate-900/70 md:h-auto md:w-[55%]">
             <div className="absolute inset-x-6 top-4 h-0.5 rounded-full bg-gradient-to-r from-cyan-400/60 via-violet-400/40 to-pink-400/60" />

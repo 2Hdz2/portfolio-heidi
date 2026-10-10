@@ -1,4 +1,5 @@
 ﻿import { motion, AnimatePresence } from 'framer-motion';
+import useLockBodyScroll from '../hooks/useLockBodyScroll';
 import { useState } from 'react';
 import { Users, X, ChevronLeft, ChevronRight, ImageOff } from 'lucide-react';
 import ScrollIndicator from '../components/ScrollIndicator';
@@ -61,6 +62,7 @@ const workItems = [
 ];
 
 const ExpandedCard = ({ item, onClose }) => {
+  useLockBodyScroll();
   const [imgIndex, setImgIndex] = useState(0);
   const hasImages = item.images?.length > 0;
 
@@ -81,7 +83,7 @@ const ExpandedCard = ({ item, onClose }) => {
         exit={{ opacity: 0, scale: 0.92, y: 20 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-[0_0_80px_rgba(236,72,153,0.2)]"
-        style={{ maxHeight: '90vh' }}
+        style={{ maxHeight: '90dvh' }}
         onClick={(e) => e.stopPropagation()}
       >
         <button onClick={onClose}
@@ -89,7 +91,7 @@ const ExpandedCard = ({ item, onClose }) => {
           <X size={16} />
         </button>
 
-        <div className="flex flex-col md:flex-row overflow-y-auto md:overflow-hidden" style={{ maxHeight: '90vh' }}>
+        <div className="flex flex-col md:flex-row overflow-y-auto md:overflow-hidden" style={{ maxHeight: '90dvh' }}>
           {/* Image panel */}
           <div className="relative h-52 sm:h-64 w-full shrink-0 overflow-hidden bg-slate-900/70 md:h-auto md:w-[50%]">
             <div className="absolute inset-x-6 top-4 h-0.5 rounded-full bg-gradient-to-r from-pink-400/60 via-violet-400/40 to-cyan-400/60 z-10" />

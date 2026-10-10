@@ -149,6 +149,7 @@
 // );
 
 // export default Skills;
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollIndicator from '../components/ScrollIndicator';
 
@@ -170,7 +171,7 @@ const skills = [
 // Desktop orbit radii
 const R1d = 110, R2d = 190, R3d = 265;
 // Mobile orbit radii (scaled down)
-const R1m = 65,  R2m = 112, R3m = 155;
+const R1m = 68,  R2m = 116, R3m = 150;
 
 const angleToDelay = (angleDeg, durationStr) => {
   const d = parseFloat(durationStr);
@@ -253,6 +254,43 @@ const OrbitDiagram = ({ R1, R2, R3, size }) => {
   );
 };
 
+// Phone diagram: fixed 360px design, scaled down to fit narrow screens so the
+// outer orbit is never clipped.
+const MOBILE_ORBIT_SIZE = 360;
+
+const ScaledOrbit = () => {
+  const [scale, setScale] = useState(() =>
+    Math.min(1, (window.innerWidth - 16) / MOBILE_ORBIT_SIZE)
+  );
+
+  useEffect(() => {
+    const onResize = () =>
+      setScale(Math.min(1, (window.innerWidth - 16) / MOBILE_ORBIT_SIZE));
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  return (
+    <div
+      style={{
+        width: MOBILE_ORBIT_SIZE * scale,
+        height: MOBILE_ORBIT_SIZE * scale,
+      }}
+    >
+      <div
+        style={{
+          width: MOBILE_ORBIT_SIZE,
+          height: MOBILE_ORBIT_SIZE,
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+        }}
+      >
+        <OrbitDiagram R1={R1m} R2={R2m} R3={R3m} size={MOBILE_ORBIT_SIZE} />
+      </div>
+    </div>
+  );
+};
+
 const Skills = () => (
   <section id="skills" className="relative scroll-mt-18 px-4 sm:px-6 py-16 sm:py-24 text-white overflow-hidden">
     <div className="absolute inset-x-0 top-0 h-36 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.12),transparent_70%)]" />
@@ -285,7 +323,7 @@ const Skills = () => (
 
       {/* Mobile diagram (small) */}
       <div className="block sm:hidden">
-        <OrbitDiagram R1={R1m} R2={R2m} R3={R3m} size={320} />
+        <ScaledOrbit />
       </div>
 
       {/* Desktop diagram (full size) */}

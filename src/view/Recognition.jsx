@@ -1,4 +1,5 @@
 ﻿import { motion, AnimatePresence } from 'framer-motion';
+import useLockBodyScroll from '../hooks/useLockBodyScroll';
 import { useState } from 'react';
 import { Briefcase, GraduationCap, X, ChevronLeft, ChevronRight, ImageOff, ChevronDown } from 'lucide-react';
 import ScrollIndicator from '../components/ScrollIndicator';
@@ -96,6 +97,7 @@ const educationItems = [
 
 // ── Expanded Modal ─────────────────────────────────────────────────────────────
 const ExpandedCard = ({ item, onClose }) => {
+  useLockBodyScroll();
   const [imgIndex, setImgIndex] = useState(0);
   const hasImages = item.images?.length > 0;
 
@@ -116,7 +118,7 @@ const ExpandedCard = ({ item, onClose }) => {
           exit={{ opacity: 0, scale: 0.94, y: 16 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-950 shadow-[0_0_100px_rgba(124,58,237,0.25)]"
-          style={{ maxHeight: '90vh', cursor: 'default', overflow: 'hidden' }}
+          style={{ maxHeight: '90dvh', cursor: 'default', overflow: 'hidden' }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* close — always on top, large target */}
@@ -129,7 +131,7 @@ const ExpandedCard = ({ item, onClose }) => {
           </button>
 
           {/* Stack on mobile, side-by-side on lg */}
-          <div className="flex flex-col lg:flex-row" style={{ maxHeight: '90vh', overflowY: 'auto' }}>
+          <div className="flex flex-col lg:flex-row" style={{ maxHeight: '90dvh', overflowY: 'auto' }}>
 
             {/* Image panel — full width on mobile, 52% on desktop */}
             <div className="relative shrink-0 overflow-hidden bg-slate-900 h-56 sm:h-72 lg:h-auto lg:w-[52%]" style={{ minHeight: 0 }}>

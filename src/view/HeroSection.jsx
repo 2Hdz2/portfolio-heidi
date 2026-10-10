@@ -216,7 +216,7 @@
 // //     <section
 // //       id="hero"
 // //       className="relative overflow-hidden bg-black text-white"
-// //       style={{ height: '100vh', maxHeight: '100vh' }}
+// //       style={{ height: '100dvh', minHeight: '600px' }}
 // //       onMouseMove={handleMouseMove}
 // //     >
 // //       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ opacity: 0.9 }} />
@@ -432,7 +432,7 @@
 // //               display: 'inline-flex', alignItems: 'center', gap: '10px',
 // //               background: 'linear-gradient(135deg, #9d41cf, #7c90db)',
 // //               color: '#ffffff',
-// //               padding: '0.65rem 1.8rem',
+// //               padding: '0.8rem 1.8rem',
 // //               borderRadius: '9999px',
 // //               fontWeight: 600,
 // //               fontSize: '0.82rem',
@@ -453,7 +453,7 @@
 // //               display: 'inline-flex', alignItems: 'center', gap: '10px',
 // //               background: 'transparent',
 // //               color: 'rgba(255,255,255,0.7)',
-// //               padding: '0.65rem 1.8rem',
+// //               padding: '0.8rem 1.8rem',
 // //               borderRadius: '9999px',
 // //               border: '1px solid rgba(157,65,207,0.38)',
 // //               fontWeight: 600,
@@ -731,7 +731,7 @@
 //                   style={{
 //                     display: 'inline-block',
 //                     fontFamily: "'Orbitron', 'Exo 2', sans-serif",
-//                     fontSize: 'clamp(0.6rem, 2.2vw, 1.6rem)',
+//                     fontSize: smallSize,
 //                     fontWeight: 500,
 //                     ...lightPurpleStyle,
 //                     letterSpacing: '0.14em',
@@ -815,7 +815,7 @@
 //                 style={{
 //                   display: 'inline-block',
 //                   fontFamily: "'Orbitron', 'Exo 2', sans-serif",
-//                   fontSize: 'clamp(0.6rem, 2.2vw, 1.6rem)',
+//                   fontSize: smallSize,
 //                   fontWeight: 500,
 //                   ...lightPurpleStyle,
 //                   letterSpacing: '0.14em',
@@ -872,7 +872,7 @@
 //                 display: 'inline-flex', alignItems: 'center', gap: '10px',
 //                 background: 'linear-gradient(135deg, #9d41cf, #7c90db)',
 //                 color: '#ffffff',
-//                 padding: '0.65rem 1.8rem',
+//                 padding: '0.8rem 1.8rem',
 //                 borderRadius: '9999px',
 //                 fontWeight: 600,
 //                 fontSize: 'clamp(0.72rem, 1.5vw, 0.82rem)',
@@ -893,7 +893,7 @@
 //                 display: 'inline-flex', alignItems: 'center', gap: '10px',
 //                 background: 'transparent',
 //                 color: 'rgba(255,255,255,0.7)',
-//                 padding: '0.65rem 1.8rem',
+//                 padding: '0.8rem 1.8rem',
 //                 borderRadius: '9999px',
 //                 border: '1px solid rgba(157,65,207,0.38)',
 //                 fontWeight: 600,
@@ -1348,7 +1348,7 @@
 //               display: 'inline-flex', alignItems: 'center', gap: '10px',
 //               background: 'linear-gradient(135deg, #9d41cf, #7c90db)',
 //               color: '#ffffff',
-//               padding: '0.65rem 1.8rem',
+//               padding: '0.8rem 1.8rem',
 //               borderRadius: '9999px',
 //               fontWeight: 600,
 //               fontSize: '0.82rem',
@@ -1369,7 +1369,7 @@
 //               display: 'inline-flex', alignItems: 'center', gap: '10px',
 //               background: 'transparent',
 //               color: 'rgba(255,255,255,0.7)',
-//               padding: '0.65rem 1.8rem',
+//               padding: '0.8rem 1.8rem',
 //               borderRadius: '9999px',
 //               border: '1px solid rgba(157,65,207,0.38)',
 //               fontWeight: 600,
@@ -1416,6 +1416,19 @@ const placedWords = bgWords.map((word, i) => ({
 }));
 
 const HeroSection = ({ onNavigate }) => {
+  // Phone-sized screens get a much bigger photo + WELCOME text
+  const [isPhone, setIsPhone] = useState(
+    () => window.matchMedia('(max-width: 767px)').matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const onChange = (e) => setIsPhone(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  const welcomeSize = isPhone ? 'min(14vw, 5rem)' : 'clamp(2rem, 5.5vw, 5.5rem)';
+  const smallSize = isPhone ? 'clamp(0.85rem, 4.4vw, 1.4rem)' : 'clamp(0.8rem, calc(2.2vw + 0.3rem), 1.6rem)';
+
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const canvasRef = useRef();
 
@@ -1544,7 +1557,7 @@ const HeroSection = ({ onNavigate }) => {
       style={{
         display: 'inline-block',
         fontFamily: "'Orbitron', 'Exo 2', sans-serif",
-        fontSize: 'clamp(1.8rem, 5.5vw, 5.5rem)',
+        fontSize: welcomeSize,
         fontWeight: 900,
         color: 'transparent',
         WebkitTextStroke: '2px rgba(255,255,255,0.96)',
@@ -1569,7 +1582,7 @@ const HeroSection = ({ onNavigate }) => {
       style={{
         display: 'inline-block',
         fontFamily: "'Orbitron', 'Exo 2', sans-serif",
-        fontSize: 'clamp(1.8rem, 5.5vw, 5.5rem)',
+        fontSize: welcomeSize,
         fontWeight: 900,
         color: 'transparent',
         background: 'linear-gradient(160deg, #e0f2fe 0%, #7dd3fc 20%, #3b82f6 50%, #4f46e5 75%, #312e81 100%)',
@@ -1621,7 +1634,7 @@ const HeroSection = ({ onNavigate }) => {
 
         {/* Hero content */}
         <div
-          className="relative flex flex-col items-center justify-center px-4 pt-16 pb-6"
+          className="relative flex flex-col items-center justify-center px-4 pt-24 pb-8 md:pt-16 md:pb-6"
           style={{ height: '100%', zIndex: 10, overflow: 'hidden' }}
         >
           {/* Name */}
@@ -1647,7 +1660,7 @@ const HeroSection = ({ onNavigate }) => {
                   style={{
                     display: 'inline-block',
                     fontFamily: "'Orbitron', 'Exo 2', sans-serif",
-                    fontSize: 'clamp(0.6rem, 2.2vw, 1.6rem)',
+                    fontSize: smallSize,
                     fontWeight: 500,
                     ...lightPurpleStyle,
                     letterSpacing: '0.14em',
@@ -1665,7 +1678,7 @@ const HeroSection = ({ onNavigate }) => {
           <div
             style={{
               position: 'relative',
-              width: 'clamp(200px, 60vw, 560px)',
+              width: isPhone ? 'min(94vw, 460px)' : 'clamp(260px, 62vw, 560px)',
               transform: `translate3d(${mouse.x * 6}px, ${mouse.y * 4}px, 0)`,
               transition: 'transform 0.1s ease',
             }}
@@ -1691,7 +1704,7 @@ const HeroSection = ({ onNavigate }) => {
                 src={myPhoto}
                 alt="Heidi Hettiarachchi"
                 style={{
-                  width: 'clamp(130px, 28vw, 300px)',
+                  width: isPhone ? 'min(64vw, 280px)' : 'clamp(160px, 28vw, 300px)',
                   height: 'auto',
                   objectFit: 'contain',
                   display: 'block',
@@ -1731,7 +1744,7 @@ const HeroSection = ({ onNavigate }) => {
                 style={{
                   display: 'inline-block',
                   fontFamily: "'Orbitron', 'Exo 2', sans-serif",
-                  fontSize: 'clamp(0.6rem, 2.2vw, 1.6rem)',
+                  fontSize: smallSize,
                   fontWeight: 500,
                   ...lightPurpleStyle,
                   letterSpacing: '0.14em',
@@ -1787,7 +1800,7 @@ const HeroSection = ({ onNavigate }) => {
                 display: 'inline-flex', alignItems: 'center', gap: '10px',
                 background: 'linear-gradient(135deg, #9d41cf, #7c90db)',
                 color: '#ffffff',
-                padding: '0.65rem 1.8rem',
+                padding: '0.8rem 1.8rem',
                 borderRadius: '9999px',
                 fontWeight: 600,
                 fontSize: 'clamp(0.72rem, 1.5vw, 0.82rem)',
@@ -1813,7 +1826,7 @@ const HeroSection = ({ onNavigate }) => {
     gap: '10px',
     background: 'linear-gradient(135deg, #9d41cf, #7c90db)',
     color: '#ffffff',
-    padding: '0.65rem 1.8rem',
+    padding: '0.8rem 1.8rem',
     borderRadius: '9999px',
     fontWeight: 600,
     fontSize: 'clamp(0.72rem, 1.5vw, 0.82rem)',
@@ -1836,7 +1849,7 @@ const HeroSection = ({ onNavigate }) => {
                 display: 'inline-flex', alignItems: 'center', gap: '10px',
                 background: 'transparent',
                 color: 'rgba(255,255,255,0.7)',
-                padding: '0.65rem 1.8rem',
+                padding: '0.8rem 1.8rem',
                 borderRadius: '9999px',
                 border: '1px solid rgba(157,65,207,0.38)',
                 fontWeight: 600,
@@ -1862,7 +1875,7 @@ const HeroSection = ({ onNavigate }) => {
     gap: '10px',
     background: 'transparent',
     color: 'rgba(255,255,255,0.7)',
-    padding: '0.65rem 1.8rem',
+    padding: '0.8rem 1.8rem',
     borderRadius: '9999px',
     border: '1px solid rgba(157,65,207,0.38)',
     fontWeight: 600,

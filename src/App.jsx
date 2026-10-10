@@ -662,6 +662,9 @@ import Footer from './components/Footer';
 
 import { useEffect, useRef, useState } from 'react';
 
+const isMobile = () =>
+  window.matchMedia('(max-width: 767px)').matches;
+
 function App() {
   const cursorRef = useRef();
   const ringRef = useRef();
@@ -670,6 +673,9 @@ function App() {
 
   // Custom cursor
   useEffect(() => {
+    // No custom cursor on touch devices
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
     let mx = 0;
     let my = 0;
     let rx = 0;
@@ -724,10 +730,13 @@ function App() {
 
     if (!target) return;
 
+    // Phones stack the pages vertically; desktop swipes horizontally
+    const mobile = isMobile();
+
     target.scrollIntoView({
       behavior: 'smooth',
-      block: 'nearest',
-      inline: 'start',
+      block: mobile ? 'start' : 'nearest',
+      inline: mobile ? 'nearest' : 'start',
     });
 
     setActiveSection(page);
@@ -746,11 +755,25 @@ function App() {
     );
 
     const handleScroll = () => {
+      const mobile = isMobile();
       const containerRect =
         container.getBoundingClientRect();
 
       let closestPanel = panels[0];
       let closestDistance = Infinity;
+
+      // Mobile: pages are stacked vertically, so the active page is the
+      // last one whose top has crossed the upper part of the screen.
+      if (mobile) {
+        const passed = panels.filter(
+          (panel) =>
+            panel.getBoundingClientRect().top <=
+            window.innerHeight * 0.4
+        );
+        const current = passed[passed.length - 1] || panels[0];
+        setActiveSection(current.dataset.page);
+        return;
+      }
 
       panels.forEach((panel) => {
         const rect = panel.getBoundingClientRect();
@@ -777,11 +800,20 @@ function App() {
       handleScroll,
       { passive: true }
     );
+    window.addEventListener(
+      'scroll',
+      handleScroll,
+      { passive: true }
+    );
 
     handleScroll();
 
     return () => {
       container.removeEventListener(
+        'scroll',
+        handleScroll
+      );
+      window.removeEventListener(
         'scroll',
         handleScroll
       );

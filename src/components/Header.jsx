@@ -182,14 +182,15 @@ const Header = ({ activeSection, onNavigate }) => {
               opacity: 1,
               scale: 1,
             }}
-            className="mt-4 rounded-3xl p-4 shadow-[0_0_35px_rgba(0,0,0,0.55)] md:hidden"
+            className="absolute left-0 right-0 top-full mt-3 max-h-[calc(100dvh-8rem)] overflow-y-auto rounded-3xl p-3 shadow-[0_0_35px_rgba(0,0,0,0.55)] md:hidden"
             style={{
-              background: 'rgba(0,0,0,0.92)',
+              background: 'rgba(5,3,10,0.98)',
+              backdropFilter: 'blur(16px)',
               border:
                 '1px solid rgba(157,65,207,0.18)',
             }}
           >
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-1">
 
               {navItems.map((item) => (
                 <button
